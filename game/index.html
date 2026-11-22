@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMBER DUEL — a card battler</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- TITLE SCREEN -->
+  <section id="screen-title" class="screen">
+    <div class="title-emblem">▲</div>
+    <h1>EMBER DUEL</h1>
+    <p class="subtitle">A duel of sparks — you vs Vex, the Cinder Warden</p>
+    <button id="btn-play" class="big-btn">▶&nbsp; PLAY</button>
+    <div class="howto">
+      <h2>HOW TO PLAY</h2>
+      <ol>
+        <li><b>Play cards</b> — click a card or press 1–5. Each costs mana gems.</li>
+        <li><b>Spend mana</b> — mana refills every turn and grows by 1 each round.</li>
+        <li><b>Reduce Vex to 0 HP</b> — shields block damage, mends heal you.</li>
+      </ol>
+    </div>
+    <p id="best-line" class="best-line"></p>
+    <p class="mute-note">M — mute · Space — start · Esc — title</p>
+  </section>
+
+  <!-- TABLE SCREEN -->
+  <section id="screen-table" class="screen hidden">
+    <div class="topbar">
+      <div class="round-badge">ROUND <span id="round-num">1</span></div>
+      <button id="btn-mute" class="mute-btn">SOUND ON (M)</button>
+    </div>
+
+    <div class="foe-area">
+      <div class="foe-info">
+        <div class="foe-name">VEX, THE CINDER WARDEN</div>
+        <div class="hpbar foe-bar">
+          <div id="ai-hp-fill" class="hp-fill"></div>
+          <span id="ai-hp-text" class="hp-text"></span>
+          <span id="ai-shield" class="shield-badge hidden"></span>
+        </div>
+        <div id="ai-mana" class="mana-row"></div>
+        <div class="deck-count">Deck <span id="ai-deck">30</span> · Hand <span id="ai-hand-count">5 cards</span></div>
+      </div>
+      <div id="ai-hand" class="hand foe-hand"></div>
+    </div>
+
+    <div id="battle-log" class="battle-log"></div>
+
+    <div class="player-area">
+      <div id="player-hand" class="hand player-hand"></div>
+      <div class="player-info">
+        <div class="player-name">YOU</div>
+        <div class="hpbar player-bar">
+          <div id="player-hp-fill" class="hp-fill"></div>
+          <span id="player-hp-text" class="hp-text"></span>
+          <span id="player-shield" class="shield-badge hidden"></span>
+        </div>
+        <div id="player-mana" class="mana-row"></div>
+        <div class="deck-count">Deck <span id="player-deck">25</span> · Discard <span id="player-discard">0</span></div>
+        <button id="btn-end-turn" class="end-btn">END TURN&nbsp; (Space)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIN / LOSS SCREEN -->
+  <section id="screen-end" class="screen hidden">
+    <div id="end-emblem" class="end-emblem win">★</div>
+    <div id="end-title" class="end-title win">VICTORY</div>
+    <p id="end-sub" class="end-sub"></p>
+    <div id="end-stats" class="end-stats"></div>
+    <button id="btn-again" class="big-btn">PLAY AGAIN&nbsp; (R)</button>
+    <button id="btn-title" class="ghost-btn">TITLE&nbsp; (Esc)</button>
+  </section>
+
+</div>
+<div id="toast" class="toast hidden"></div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
